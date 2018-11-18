@@ -14,11 +14,11 @@ def mapper(log_file):
 
     fd = os.open(log_file, os.O_RDWR)
     ret = os.read(fd, 756899).decode('utf-8')
-    pattern = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+    pattern = r"\d{2,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
     pattern_re = re.compile(pattern)
     Ip_addr = pattern_re.findall(ret)
     for IP in Ip_addr:
-        result = (IP + "\t" + "1" + "\n")
+        result = (IP + "\t" + "\t" + "1" + "\n")
         with open('IPs_mapped.csv', 'a') as f:
             f.write(result)
     return result
@@ -62,7 +62,7 @@ def entries_per_IP(csv_file_path):
 if __name__ == "__main__":
     print(mapper(access_log))
 
-    print(reducer(mapped_log))
+    # print(reducer(mapped_log))
 
 
 
