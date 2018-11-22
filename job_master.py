@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import sys
 import ipaddress
@@ -25,20 +26,16 @@ def mapper(log_file):
 
 
 def reducer(csv_file_path):
-    previous = None
-    sum = 0
+    kv_dict = {}
     for line in csv_file_path:
-        key, value = line.split('\t')
-    print(key)
-    #     value = 0
-    #     if key != previous:
-    #         if previous is not None:
-    #             print(str(sum) + '\t' + previous) 
-    #         previous = key
-    #         sum = 0
-        
-    #     sum = sum + int(value)
-    # print(str(sum) + '\t' + previous)
+        word, count = line.split()
+        if word in kv_dict.keys():
+            kv_dict[word] += int(count)
+        else:
+            kv_dict[word] =1
+    for word in kv_dict.keys():
+        print(word, kv_dict[word])
+
 
 
 #Reducer to count total number of server connections
@@ -52,9 +49,9 @@ def reduce_Unique_IPs(csv_file_path):
     #sums no. of IPs in validIPs csv file
     IP_count = sum(1 for row in csv_file_path)
     return IP_count
+    
 
 #Reducer to count no. of entries for each IP
-
 def entries_per_IP(csv_file_path):
     pass
 

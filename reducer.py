@@ -2,13 +2,13 @@ import operator
 from operator import itemgetter
 import sys
 
-content = open('IPs_mapped.csv', "r").readlines()
+# content = open('IPs_mapped.csv', "r").readlines()
 
 current_word = None
 current_count = 0
 word = None
 
-# input comes from STDIN
+# input comes from STDIN 
 for line in content:
     # remove leading and trailing whitespace
     line = line.strip()
