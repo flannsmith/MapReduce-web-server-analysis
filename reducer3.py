@@ -3,7 +3,7 @@
 import sys
 import os
 
-""" Processes the mappers output and returns the total number of 
+""" Receives and processes the mappers output (stdout) and returns the total number of 
 of entries for each IP in the server log """
 
 def reducer3():

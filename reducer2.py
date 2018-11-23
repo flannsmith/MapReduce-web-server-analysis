@@ -6,7 +6,6 @@ import os
 """ Processes the output from the mapper and returns the number of distinct IPs  """
 
 def reducer2():
-    # count = 0
     IPs = []
     for line in sys.stdin:
         #print(line, end="")

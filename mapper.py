@@ -9,15 +9,14 @@ import operator
 """Takes access_log as input from command line and returns all IP addresses with the number of their occurrence"""
 def mapper():
 
-
     list_ip = []
     fd = os.open(sys.argv[1], os.O_RDWR)
     #Specify the no. of bytes to read in. Total size of access_log is 756899 bytes 
     ret = os.read(fd, 756899).decode('utf-8')
 
-    #Find new line preceding IP address and find a space after IP 
+    #Regex to find new line preceding IP address and find a space after IP 
     pattern = re.compile(r'(?<=\n)(\d+\.\d+\.\d+\.\d+)(?=\s)')
-    #Finding the first IP address in the whole file
+    #Regex finding the first IP address in the whole file
     pattern_2 = re.compile(r'(^\d+\.\d+\.\d+\.\d+)')
     list_ip = pattern.findall(ret)
     list_first_ip = pattern_2.findall(ret)
