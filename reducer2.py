@@ -3,11 +3,21 @@
 import sys
 import os
 
-""" Processes the csv file created by mapper by and returns the distinct 
-number of IPs  """
+""" Processes the output from the mapper and returns the number of distinct IPs  """
 
-count = 0
-unique_IPs = set(content)
-for entry in unique_IPs:
-    count+=1
-return count
+def reducer2():
+    # count = 0
+    IPs = []
+    for line in sys.stdin:
+        #print(line, end="")
+        IPs.append(line)
+    
+    unique_IPs = set(IPs)
+    num_unique_IPs =(len(unique_IPs))
+    return num_unique_IPs
+
+
+if __name__ == "__main__":
+    print(reducer2())
+
+
